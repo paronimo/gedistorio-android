@@ -1,9 +1,41 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tema claro: celeste, azul claro, blanco y tonos suaves. -->
+<resources>
     <style name="Base.Theme.Geditorio" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/celeste</item>
+        <item name="colorOnPrimary">@color/texto_sobre_primario</item>
+        <item name="colorPrimaryContainer">@color/azul_claro</item>
+        <item name="colorOnPrimaryContainer">@color/texto</item>
+        <item name="colorSecondary">@color/azul</item>
+        <item name="colorOnSecondary">@color/texto_sobre_primario</item>
+        <item name="colorSecondaryContainer">@color/fondo_secundario</item>
+        <item name="colorOnSecondaryContainer">@color/texto</item>
+        <item name="colorTertiary">@color/azul_claro</item>
+        <item name="colorSurface">@color/superficie</item>
+        <item name="colorOnSurface">@color/texto</item>
+        <item name="colorSurfaceVariant">@color/fondo_secundario</item>
+        <item name="colorOnSurfaceVariant">@color/texto_secundario</item>
+        <item name="colorOutline">@color/borde</item>
+        <item name="android:colorBackground">@color/fondo</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
     <style name="Theme.Geditorio" parent="Base.Theme.Geditorio" />
+
+    <!-- Textos -->
+    <style name="TextAppearance.Geditorio.Titulo" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textColor">@color/texto</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Geditorio.Valor" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/texto</item>
+    </style>
+
+    <style name="TextAppearance.Geditorio.Etiqueta" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textColor">@color/texto_terciario</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
 </resources>

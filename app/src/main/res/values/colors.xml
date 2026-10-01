@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Paleta de identidad visual de Geditorio.
+    MODO CLARO: celeste, azul claro, blanco y tonos suaves.
+    La version oscura (azul oscuro, negro, gris oscuro) esta en
+    values-night/colors.xml con los MISMOS nombres, para que el tema
+    DayNight cambie los tonos solo.
+-->
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Identidad: celeste / azul claro -->
+    <color name="celeste">#FF38BDF8</color>
+    <color name="azul_claro">#FF7DD3FC</color>
+    <color name="azul">#FF0284C7</color>
+
+    <!-- Fondos y superficies suaves -->
+    <color name="fondo">#FFF2F9FF</color>
+    <color name="fondo_secundario">#FFE0F2FE</color>
+    <color name="superficie">#FFFFFFFF</color>
+    <color name="superficie_suave">#FFF7FCFF</color>
+    <color name="borde">#FFBAE6FD</color>
+
+    <!-- Texto -->
+    <color name="texto">#FF0C2C45</color>
+    <color name="texto_secundario">#FF3E6B85</color>
+    <color name="texto_terciario">#FF6E93A9</color>
+    <color name="texto_sobre_primario">#FFFFFFFF</color>
 </resources>

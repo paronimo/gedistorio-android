@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_nav_home"
+        android:title="@string/nav_inicio" />
+    <item
+        android:id="@+id/misSalidasFragment"
+        android:icon="@drawable/ic_nav_salidas"
+        android:title="@string/nav_mis_salidas" />
+    <item
+        android:id="@+id/reportarFragment"
+        android:icon="@drawable/ic_nav_reportar"
+        android:title="@string/nav_reportar" />
+    <item
+        android:id="@+id/historialFragment"
+        android:icon="@drawable/ic_nav_historial"
+        android:title="@string/nav_historial" />
+</menu>

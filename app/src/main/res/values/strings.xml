@@ -1,3 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Geditorio</string>
+
+    <!-- Navegación -->
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_mis_salidas">Mis salidas</string>
+    <string name="nav_reportar">Reportar salida</string>
+    <string name="nav_historial">Historial</string>
+
+    <!-- Pantalla de inicio -->
+    <string name="inicio_titulo">Geditorio</string>
+    <string name="inicio_subtitulo">Próxima salida</string>
+    <string name="etiqueta_fecha">Fecha</string>
+    <string name="etiqueta_hora">Hora</string>
+    <string name="etiqueta_tipo">Tipo de salida</string>
+    <string name="etiqueta_lugar">Lugar de encuentro</string>
+    <string name="etiqueta_conductor">Conductor</string>
+    <string name="etiqueta_territorio">Territorio</string>
+    <string name="aviso_datos_ejemplo">Mostrando datos de ejemplo</string>
+
+    <!-- Pantallas pendientes de implementar -->
+    <string name="proximamente">Próximamente</string>
+    <string name="mis_salidas_descripcion">Aquí verás tus salidas asignadas.</string>
+    <string name="reportar_descripcion">Aquí podrás reportar el inicio y el fin de una salida.</string>
+    <string name="historial_descripcion">Aquí consultarás el historial de salidas.</string>
 </resources>

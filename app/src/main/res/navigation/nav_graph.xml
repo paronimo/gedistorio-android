@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Estructura de navegacion. Solo se definen las pantallas:
+    aun no tienen logica real, quedaran para una etapa posterior.
+-->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.geditorio.ui.home.HomeFragment"
+        android:label="@string/nav_inicio"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/misSalidasFragment"
+        android:name="com.example.geditorio.ui.misSalidas.MisSalidasFragment"
+        android:label="@string/nav_mis_salidas" />
+
+    <fragment
+        android:id="@+id/reportarFragment"
+        android:name="com.example.geditorio.ui.reportar.ReportarFragment"
+        android:label="@string/nav_reportar" />
+
+    <fragment
+        android:id="@+id/historialFragment"
+        android:name="com.example.geditorio.ui.historial.HistorialFragment"
+        android:label="@string/nav_historial" />
+
+</navigation>
