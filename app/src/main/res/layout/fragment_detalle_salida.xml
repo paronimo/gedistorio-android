@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Detalle completo de una salida. -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="24dp">
+
+        <!-- Encabezado: tipo y estado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtTipo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.Geditorio.Titulo"
+                tools:text="Grupo 1" />
+
+            <TextView
+                android:id="@+id/txtEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_estado"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta"
+                tools:text="Confirmada" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="@color/texto_secundario"
+            tools:text="Viernes 12 de septiembre de 2026" />
+
+        <TextView
+            android:id="@+id/txtHora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+            android:textColor="@color/texto"
+            tools:text="07:30" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="@color/borde" />
+
+        <!-- Lugar de encuentro -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/etiqueta_lugar"
+            android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta" />
+
+        <TextView
+            android:id="@+id/txtLugar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="@color/texto"
+            tools:text="Ejemplo: Plaza Central" />
+
+        <!-- Boton de Google Maps: solo visible si hay enlace -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMapa"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/btn_abrir_mapa"
+            android:visibility="gone"
+            app:icon="@drawable/ic_mapa"
+            tools:visibility="visible" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="@color/borde" />
+
+        <!-- Conductor -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/etiqueta_conductor"
+            android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta" />
+
+        <TextView
+            android:id="@+id/txtConductor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="@color/texto"
+            tools:text="Ejemplo: Carla Mendez" />
+
+        <!-- Territorios -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/etiqueta_territorio"
+            android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta" />
+
+        <TextView
+            android:id="@+id/txtTerritorios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="@color/texto"
+            tools:text="1, 70, 69, 2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/aviso_datos_ejemplo"
+            android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta"
+            android:textColor="@color/texto_terciario" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

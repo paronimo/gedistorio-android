@@ -31,13 +31,18 @@ class HomeFragment : Fragment() {
 
         val salida = repository.proximaSalida()
 
-        view.findViewById<TextView>(R.id.txtTipo).text = salida.tipo
-        view.findViewById<TextView>(R.id.txtFecha).text = salida.fecha
+        view.findViewById<TextView>(R.id.txtTipo).text = salida.tipo.etiqueta
+        view.findViewById<TextView>(R.id.txtFecha).text = salida.fechaTexto
 
-        view.mostrarFila(R.id.rowHora, R.string.etiqueta_hora, salida.hora)
+        view.mostrarFila(R.id.rowHora, R.string.etiqueta_hora, salida.horaTexto)
         view.mostrarFila(R.id.rowLugar, R.string.etiqueta_lugar, salida.lugarDeEncuentro)
         view.mostrarFila(R.id.rowConductor, R.string.etiqueta_conductor, salida.conductor)
-        view.mostrarFila(R.id.rowTerritorio, R.string.etiqueta_territorio, salida.territorio)
+        view.mostrarFila(
+            R.id.rowTerritorio,
+            R.string.etiqueta_territorio,
+            salida.territoriosTexto
+        )
+        view.mostrarFila(R.id.rowEstado, R.string.etiqueta_estado, salida.estado.etiqueta)
     }
 
     private fun View.mostrarFila(idFila: Int, etiqueta: Int, valor: String) {

@@ -16,12 +16,24 @@
     <string name="etiqueta_tipo">Tipo de salida</string>
     <string name="etiqueta_lugar">Lugar de encuentro</string>
     <string name="etiqueta_conductor">Conductor</string>
-    <string name="etiqueta_territorio">Territorio</string>
+    <string name="etiqueta_territorio">Territorios</string>
+    <string name="etiqueta_territorio_con_valor">Territorios: %1$s</string>
+    <string name="etiqueta_estado">Estado</string>
     <string name="aviso_datos_ejemplo">Mostrando datos de ejemplo</string>
+
+    <!-- Mis salidas -->
+    <string name="mis_salidas_descripcion">Tus salidas asignadas, ordenadas por fecha y hora.</string>
+    <string name="mis_salidas_vacio">Todavía no tenés salidas asignadas.</string>
+
+    <!-- Detalle de salida -->
+    <string name="titulo_detalle_salida">Detalle de la salida</string>
+    <string name="btn_abrir_mapa">Abrir en Google Maps</string>
+    <string name="sin_territorios">Sin territorios</string>
+    <string name="error_salida_no_encontrada">La salida ya no está disponible.</string>
+    <string name="error_sin_app_mapa">No se encontró una app para abrir el mapa.</string>
 
     <!-- Pantallas pendientes de implementar -->
     <string name="proximamente">Próximamente</string>
-    <string name="mis_salidas_descripcion">Aquí verás tus salidas asignadas.</string>
     <string name="reportar_descripcion">Aquí podrás reportar el inicio y el fin de una salida.</string>
     <string name="historial_descripcion">Aquí consultarás el historial de salidas.</string>
 </resources>

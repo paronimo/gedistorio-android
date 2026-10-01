@@ -1,6 +1,7 @@
 package com.example.geditorio.data
 
 import com.example.geditorio.data.mock.SalidaEjemploDataSource
+import com.example.geditorio.data.model.EstadoSalida
 import com.example.geditorio.data.model.Salida
 
 /**
@@ -13,5 +14,18 @@ import com.example.geditorio.data.model.Salida
 class SalidaRepository(
     private val dataSource: SalidaDataSource = SalidaEjemploDataSource
 ) {
-    fun proximaSalida(): Salida = dataSource.obtenerProximaSalida()
+    /**
+     * Proxima salida pendiente o confirmada, la mas cercana en el tiempo.
+     * Las ya realizadas o canceladas no se consideran "proxima salida".
+     */
+    fun proximaSalida(): Salida = misSalidas()
+        .firstOrNull { it.estado == EstadoSalida.PENDIENTE || it.estado == EstadoSalida.CONFIRMADA }
+        ?: misSalidas().first()
+
+    /** Salidas asignadas al conductor, ordenadas por fecha y hora. */
+    fun misSalidas(): List<Salida> = dataSource.obtenerSalidas().sortedWith(
+        compareBy({ it.claveFecha }, { it.claveHora })
+    )
+
+    fun salidaPorId(id: String): Salida? = dataSource.obtenerSalidas().firstOrNull { it.id == id }
 }

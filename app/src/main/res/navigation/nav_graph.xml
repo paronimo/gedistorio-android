@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Estructura de navegacion. Solo se definen las pantallas:
-    aun no tienen logica real, quedaran para una etapa posterior.
+    Estructura de navegacion. "Reportar salida" e "Historial" siguen
+    sin logica real; quedaran para una etapa posterior.
 -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -18,7 +18,25 @@
     <fragment
         android:id="@+id/misSalidasFragment"
         android:name="com.example.geditorio.ui.misSalidas.MisSalidasFragment"
-        android:label="@string/nav_mis_salidas" />
+        android:label="@string/nav_mis_salidas"
+        tools:layout="@layout/fragment_mis_salidas">
+
+        <action
+            android:id="@+id/action_misSalidasFragment_to_detalleSalidaFragment"
+            app:destination="@id/detalleSalidaFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detalleSalidaFragment"
+        android:name="com.example.geditorio.ui.detalle.DetalleSalidaFragment"
+        android:label="@string/titulo_detalle_salida"
+        tools:layout="@layout/fragment_detalle_salida">
+
+        <!-- Solo se pasa el id: el detalle busca la salida al abrirse. -->
+        <argument
+            android:name="salidaId"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/reportarFragment"
