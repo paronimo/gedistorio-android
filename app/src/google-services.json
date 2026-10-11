@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "191499340564",
+    "project_id": "gedistorio",
+    "storage_bucket": "gedistorio.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191499340564:android:dd44c4c14b3693f7ce9001",
+        "android_client_info": {
+          "package_name": "com.gedistorio.conductores"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_z8n1unDlTZ1RJWmzUo-mF5F5n2NHSSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

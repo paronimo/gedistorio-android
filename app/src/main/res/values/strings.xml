@@ -32,8 +32,23 @@
     <string name="error_salida_no_encontrada">La salida ya no está disponible.</string>
     <string name="error_sin_app_mapa">No se encontró una app para abrir el mapa.</string>
 
+    <!-- Reportar salida -->
+    <string name="reportar_descripcion">Indicá el resultado de la salida.</string>
+    <string name="reportar_salida_actual">Salida a reportar</string>
+    <string name="reportar_salida_no_disponible">No hay ninguna salida disponible para reportar.</string>
+    <string name="reportar_resultado">Resultado de la salida</string>
+    <string name="reportar_si_realizo">La salida se realizó</string>
+    <string name="reportar_no_realizo">La salida no se realizó</string>
+    <string name="reportar_observaciones_hint">Observaciones</string>
+    <string name="reportar_adicional_titulo">Información adicional</string>
+    <string name="reportar_adicional_placeholder">Estos campos se definirán más adelante. Por ahora no hay nada que completar.</string>
+    <string name="btn_enviar_reporte">Enviar reporte</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="error_falta_resultado">Indicá si la salida se realizó o no.</string>
+    <string name="reporte_enviado_prueba">Reporte validado. Todavía no se guarda ni se envía a ningún servidor.</string>
+    <string name="reporte_cancelado">Formulario descartado.</string>
+
     <!-- Pantallas pendientes de implementar -->
     <string name="proximamente">Próximamente</string>
-    <string name="reportar_descripcion">Aquí podrás reportar el inicio y el fin de una salida.</string>
     <string name="historial_descripcion">Aquí consultarás el historial de salidas.</string>
 </resources>

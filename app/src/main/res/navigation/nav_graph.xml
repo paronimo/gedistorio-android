@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Estructura de navegacion. "Reportar salida" e "Historial" siguen
-    sin logica real; quedaran para una etapa posterior.
+    Estructura de navegacion. Solo "Historial" sigue sin logica real.
 -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -41,7 +40,8 @@
     <fragment
         android:id="@+id/reportarFragment"
         android:name="com.example.geditorio.ui.reportar.ReportarFragment"
-        android:label="@string/nav_reportar" />
+        android:label="@string/nav_reportar"
+        tools:layout="@layout/fragment_reportar" />
 
     <fragment
         android:id="@+id/historialFragment"

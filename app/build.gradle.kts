@@ -9,7 +9,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.geditorio"
+        applicationId = "com.gedistorio.conductores"
         minSdk = 24
         targetSdk = 37
         versionCode = 1

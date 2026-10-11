@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pantalla Reportar salida.
+
+    Por ahora es SOLO la interfaz: al enviar se valida y se muestra un
+    mensaje de prueba. No se guarda nada ni se envia a ningun servidor.
+-->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="24dp">
+
+        <!-- Encabezado -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_reportar"
+            android:textAppearance="@style/TextAppearance.Geditorio.Titulo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/reportar_descripcion"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="@color/texto_secundario" />
+
+        <!--
+            La salida a reportar llega por id. Por ahora se muestra la
+            proxima salida disponible; cuando exista la fuente real se
+            mostrara la que se selecciono desde "Mis salidas".
+        -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/borde"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reportar_salida_actual"
+                    android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta" />
+
+                <TextView
+                    android:id="@+id/txtSalidaTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textColor="@color/texto"
+                    tools:text="Grupo 1 · Viernes 12 de septiembre de 2026" />
+
+                <TextView
+                    android:id="@+id/txtSalidaDetalle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textColor="@color/texto_terciario"
+                    tools:text="07:30 · Ejemplo: Plaza Central" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Resultado de la salida: se realizó o no -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/reportar_resultado"
+            android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta" />
+
+        <RadioGroup
+            android:id="@+id/grupoResultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioRealizada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/reportar_si_realizo"
+                android:textColor="@color/texto" />
+
+            <RadioButton
+                android:id="@+id/radioNoRealizada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/reportar_no_realizo"
+                android:textColor="@color/texto" />
+        </RadioGroup>
+
+        <!-- Observaciones -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutObservaciones"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/reportar_observaciones_hint"
+            app:counterEnabled="true"
+            app:counterMaxLength="500">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputObservaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|start"
+                android:inputType="textMultiLine|textCapSentences"
+                android:maxLength="500"
+                android:minLines="4" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--
+            Bloque reservado para la "informacion adicional" que se definira
+            mas adelante. Se deja visible y deshabilitado para que quede claro
+            que falta completarlo, sin inventar campos.
+        -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/reportar_adicional_titulo"
+            android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/borde"
+            app:strokeWidth="1dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/reportar_adicional_placeholder"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="@color/texto_terciario" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Acciones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancelar"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="@string/btn_cancelar" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEnviar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="@string/btn_enviar_reporte" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
