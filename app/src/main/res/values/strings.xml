@@ -1,3 +1,73 @@
 <resources>
     <string name="app_name">Geditorio</string>
+<<<<<<< Updated upstream
 </resources>
+=======
+
+    <!-- Navegación -->
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_mis_salidas">Mis salidas</string>
+    <string name="nav_reportar">Reportar salida</string>
+    <string name="nav_historial">Historial</string>
+
+    <!-- Pantalla de inicio -->
+    <string name="inicio_titulo">Geditorio</string>
+    <string name="inicio_subtitulo">Próxima salida</string>
+    <string name="etiqueta_fecha">Fecha</string>
+    <string name="etiqueta_hora">Hora</string>
+    <string name="etiqueta_tipo">Tipo de salida</string>
+    <string name="etiqueta_lugar">Lugar de encuentro</string>
+    <string name="etiqueta_conductor">Conductor</string>
+    <string name="etiqueta_territorio">Territorios</string>
+    <string name="etiqueta_territorio_con_valor">Territorios: %1$s</string>
+    <string name="etiqueta_estado">Estado</string>
+    <string name="aviso_datos_ejemplo">Mostrando datos de ejemplo</string>
+
+    <!-- Mis salidas -->
+    <string name="mis_salidas_descripcion">Tus salidas asignadas, ordenadas por fecha y hora.</string>
+    <string name="mis_salidas_vacio">Todavía no tenés salidas asignadas.</string>
+
+    <!-- Detalle de salida -->
+    <string name="titulo_detalle_salida">Detalle de la salida</string>
+    <string name="btn_abrir_mapa">Abrir en Google Maps</string>
+    <string name="sin_territorios">Sin territorios</string>
+    <string name="error_salida_no_encontrada">La salida ya no está disponible.</string>
+    <string name="error_sin_app_mapa">No se encontró una app para abrir el mapa.</string>
+
+    <!-- Reportar salida -->
+    <string name="reportar_descripcion">Indicá el resultado de la salida.</string>
+    <string name="reportar_salida_actual">Salida a reportar</string>
+    <string name="reportar_salida_no_disponible">No hay ninguna salida disponible para reportar.</string>
+    <string name="reportar_resultado">Resultado de la salida</string>
+    <string name="reportar_si_realizo">La salida se realizó</string>
+    <string name="reportar_no_realizo">La salida no se realizó</string>
+    <string name="reportar_observaciones_hint">Observaciones</string>
+    <string name="reportar_adicional_titulo">Información adicional</string>
+    <string name="reportar_adicional_placeholder">Estos campos se definirán más adelante. Por ahora no hay nada que completar.</string>
+    <string name="btn_enviar_reporte">Enviar reporte</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="error_falta_resultado">Indicá si la salida se realizó o no.</string>
+    <string name="reporte_enviado_prueba">Reporte validado. Todavía no se guarda ni se envía a ningún servidor.</string>
+    <string name="reporte_cancelado">Formulario descartado.</string>
+
+    <!-- Pantallas pendientes de implementar -->
+    <string name="proximamente">Próximamente</string>
+    <string name="historial_descripcion">Aquí consultarás el historial de salidas.</string>
+
+    <!-- Inicio de sesión -->
+    <string name="login_titulo">Geditorio</string>
+    <string name="login_subtitulo">Ingresá con tu cuenta de conductor.</string>
+    <string name="login_correo">Correo electrónico</string>
+    <string name="login_contrasena">Contraseña</string>
+    <string name="login_boton_entrar">Iniciar sesión</string>
+    <string name="error_correo_vacio">Ingresá tu correo electrónico.</string>
+    <string name="error_contrasena_vacia">Ingresá tu contraseña.</string>
+    <string name="error_credenciales">El correo o la contraseña son incorrectos.</string>
+    <string name="error_conexion">No se pudo conectar. Revisá tu conexión a internet.</string>
+    <string name="error_generico">No se pudo iniciar sesión. Intentá nuevamente.</string>
+
+    <!-- Cerrar sesión -->
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="cerrar_sesion_pregunta">¿Querés cerrar sesión?</string>
+</resources>
+>>>>>>> Stashed changes
