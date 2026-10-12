@@ -6,15 +6,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-<<<<<<< Updated upstream
-=======
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.geditorio.data.AuthRepository
 import com.example.geditorio.ui.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
->>>>>>> Stashed changes
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,8 +33,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-<<<<<<< Updated upstream
-=======
 
         // Navegacion principal: Inicio / Mis salidas / Reportar / Historial
         val navHost = supportFragmentManager
@@ -70,6 +65,5 @@ class MainActivity : AppCompatActivity() {
     private fun irALogin() {
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
->>>>>>> Stashed changes
     }
 }

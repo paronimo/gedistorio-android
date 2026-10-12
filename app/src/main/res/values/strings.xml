@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">Geditorio</string>
-<<<<<<< Updated upstream
-</resources>
-=======
 
     <!-- Navegación -->
     <string name="nav_inicio">Inicio</string>
@@ -70,4 +67,3 @@
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="cerrar_sesion_pregunta">¿Querés cerrar sesión?</string>
 </resources>
->>>>>>> Stashed changes
