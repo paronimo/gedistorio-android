@@ -10,9 +10,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.geditorio.R
 import com.example.geditorio.data.SalidaRepository
+import com.example.geditorio.data.SalidasException
+import com.example.geditorio.data.model.Salida
 import com.google.android.material.button.MaterialButton
+import kotlinx.coroutines.launch
 
 /**
  * Detalle completo de una salida.
@@ -26,6 +30,12 @@ class DetalleSalidaFragment : Fragment() {
     private val ARG_SALIDA_ID = "salidaId"
 
     private val repository = SalidaRepository()
+    private var vista: View? = null
+
+    override fun onDestroyView() {
+        vista = null
+        super.onDestroyView()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,8 +45,22 @@ class DetalleSalidaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        vista = view
 
-        val salida = repository.salidaPorId(requireArguments().getString(ARG_SALIDA_ID).orEmpty())
+        viewLifecycleOwner.lifecycleScope.launch {
+            val actual = vista ?: return@launch
+            val salida = try {
+                repository.salidaPorId(requireArguments().getString(ARG_SALIDA_ID).orEmpty())
+            } catch (e: SalidasException) {
+                Toast.makeText(requireContext(), R.string.cronograma_error_conexion, Toast.LENGTH_SHORT).show()
+                requireActivity().onBackPressedDispatcher.onBackPressed()
+                return@launch
+            }
+            mostrar(actual, salida)
+        }
+    }
+
+    private fun mostrar(view: View, salida: Salida?) {
         if (salida == null) {
             // La salida ya no existe: no se muestra una pantalla vacia.
             Toast.makeText(requireContext(), R.string.error_salida_no_encontrada, Toast.LENGTH_SHORT)
@@ -49,8 +73,10 @@ class DetalleSalidaFragment : Fragment() {
         view.findViewById<TextView>(R.id.txtEstado).text = salida.estado.etiqueta
         view.findViewById<TextView>(R.id.txtFecha).text = salida.fechaTexto
         view.findViewById<TextView>(R.id.txtHora).text = salida.horaTexto
-        view.findViewById<TextView>(R.id.txtLugar).text = salida.lugarDeEncuentro
-        view.findViewById<TextView>(R.id.txtConductor).text = salida.conductor
+        view.findViewById<TextView>(R.id.txtLugar).text =
+            salida.lugarDeEncuentro.ifBlank { getString(R.string.sin_asignar) }
+        view.findViewById<TextView>(R.id.txtConductor).text =
+            salida.conductor.ifBlank { getString(R.string.sin_asignar) }
         view.findViewById<TextView>(R.id.txtTerritorios).text =
             if (salida.territorios.isEmpty()) getString(R.string.sin_territorios)
             else salida.territoriosTexto

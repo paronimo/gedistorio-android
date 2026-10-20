@@ -36,6 +36,13 @@
     <string name="reportar_descripcion">Indicá el resultado de la salida.</string>
     <string name="reportar_salida_actual">Salida a reportar</string>
     <string name="reportar_salida_no_disponible">No hay ninguna salida disponible para reportar.</string>
+    <string name="reportar_cargando_salida">Cargando la salida del cronograma…</string>
+    <string name="reportar_sin_salidas">El cronograma del gestor no tiene salidas para reportar ahora.</string>
+    <string name="cronograma_error_conexion">No se pudo consultar el cronograma: revisá la conexión con el servidor.</string>
+    <string name="cronograma_error_generico">No se pudo consultar el cronograma del gestor.</string>
+    <string name="cronograma_titulo">Cronograma del gestor</string>
+    <string name="reintentar">Reintentar</string>
+    <string name="sin_asignar">Sin asignar</string>
     <string name="reportar_resultado">Resultado de la salida</string>
     <string name="reportar_si_realizo">La salida se realizó</string>
     <string name="reportar_no_realizo">La salida no se realizó</string>
@@ -43,10 +50,35 @@
     <string name="reportar_adicional_titulo">Información adicional</string>
     <string name="reportar_adicional_placeholder">Estos campos se definirán más adelante. Por ahora no hay nada que completar.</string>
     <string name="btn_enviar_reporte">Enviar reporte</string>
+
+    <!-- Selección de manzanas en el mapa -->
+    <string name="reportar_manzanas_titulo">Manzanas</string>
+    <string name="reportar_manzanas_ayuda">Tocá una manzana del mapa para seleccionarla.</string>
+    <string name="reportar_manzanas_sin_datos">No se pudieron cargar las manzanas del mapa.</string>
+    <string name="reportar_manzanas_seleccionadas">Selección</string>
+    <string name="reportar_sin_seleccion">Todavía no seleccionaste ninguna manzana.</string>
+    <string name="reportar_territorio_texto">Territorio</string>
+    <string name="reportar_quitar_ultima">Quitar última</string>
+    <string name="reportar_quitar_todo">Quitar todo</string>
+    <string name="reportar_dialog_titulo">Manzana %1$s</string>
+    <string name="reportar_dialog_marcar_manzana">Marcar esta manzana</string>
+    <string name="reportar_dialog_marcar_territorio">Marcar todo el territorio</string>
+    <string name="reportar_dialog_cancelar">Cancelar</string>
+    <string name="reportar_dialog_quitar_manzana">Quitar esta manzana</string>
+    <string name="reportar_dialog_quitar_territorio">Quitar todo el territorio</string>
+    <string name="reportar_dialog_sin_identificador">Esta figura no tiene número de manzana o territorio asignado.</string>
     <string name="btn_cancelar">Cancelar</string>
     <string name="error_falta_resultado">Indicá si la salida se realizó o no.</string>
-    <string name="reporte_enviado_prueba">Reporte validado. Todavía no se guarda ni se envía a ningún servidor.</string>
+    <string name="reporte_enviado">Reporte enviado y guardado en el gestor.</string>
+    <string name="reporte_ya_guardado">Este reporte ya estaba guardado en el gestor.</string>
     <string name="reporte_cancelado">Formulario descartado.</string>
+    <string name="reporte_envio_en_curso">El reporte se está enviando. Esperá a que termine.</string>
+    <string name="reporte_error_sin_configurar">No hay un servidor configurado en la app.</string>
+    <string name="reporte_error_sesion">La sesión no es válida. Cerrá sesión y volvé a entrar.</string>
+    <string name="reporte_error_salida">El gestor no encontró esta salida en el cronograma.</string>
+    <string name="reporte_error_conexion">No se pudo enviar el reporte: revisá la conexión al servidor.</string>
+    <string name="reporte_error_servidor">El servidor no pudo guardar el reporte. Intentá nuevamente.</string>
+    <string name="reporte_error_generico">No se pudo enviar el reporte. Intentá nuevamente.</string>
 
     <!-- Pantallas pendientes de implementar -->
     <string name="proximamente">Próximamente</string>

@@ -8,9 +8,10 @@ import com.example.geditorio.data.model.TipoSalida
 /**
  * FUENTE DE DATOS DE EJEMPLO.
  *
- * IMPORTANTE: esta clase es temporal. Solo alimenta la interfaz visual.
- * Cuando exista la fuente real (API / backend), se implementara
- * SalidaDataSource con esa fuente y esta dejara de usarse.
+ * IMPORTANTE: la app ya NO usa esta fuente. Las pantallas obtienen el
+ * cronograma real con ServidorSalidaDataSource. Esta clase se conserva solo
+ * como referencia/documentacion y ninguna pantalla la puede mostrar como si
+ * fueran datos del servidor.
  *
  * La UI nunca lee estos valores directamente: siempre pasa por SalidaRepository.
  *
@@ -79,5 +80,5 @@ object SalidaEjemploDataSource : SalidaDataSource {
     )
 
 
-    override fun obtenerSalidas(): List<Salida> = ejemplo
+    override suspend fun obtenerSalidas(): List<Salida> = ejemplo
 }

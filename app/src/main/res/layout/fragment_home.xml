@@ -48,6 +48,17 @@
                     android:text="@string/inicio_subtitulo"
                     android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta" />
             </LinearLayout>
+
+            <!-- Cerrar sesion: opcion visible y siempre a mano en la pantalla de Inicio. -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCerrarSesion"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cerrar_sesion"
+                android:tooltipText="@string/cerrar_sesion"
+                app:icon="@drawable/ic_cerrar_sesion"
+                app:iconTint="@color/texto_secundario" />
         </LinearLayout>
 
         <!-- Tarjeta con los datos de la salida -->

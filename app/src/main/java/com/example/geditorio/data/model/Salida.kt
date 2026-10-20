@@ -62,6 +62,12 @@ sealed class TipoSalida(val etiqueta: String) {
 
     /** Salida de un grupo concreto. El numero permite nuevos grupos. */
     data class Grupo(val numero: Int) : TipoSalida("Grupo $numero")
+
+    /**
+     * Cualquier otro tipo del gestor ("Especial", "Antigua"...). Conserva el
+     * nombre real en lugar de forzar un grupo o perder el dato.
+     */
+    data class Otro(private val nombre: String) : TipoSalida(nombre)
 }
 
 /**

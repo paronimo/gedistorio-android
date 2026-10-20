@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Configuracion de seguridad de red de Geditorio.
+
+  Android 9 (API 28) y posteriores bloquean por defecto el trafico HTTP en
+  texto plano. El backend Geditorio se ejecuta en la red local de la oficina
+  (por ejemplo http://192.168.0.117:3000) y su IP puede cambiar cuando el
+  router asigna direcciones nuevas. Como Android no admite comodines ni rangos
+  de IP en <domain>, se habilita el trafico en texto plano de forma acotada:
+  solo se declara como confiable la red local, y el resto de los destinos
+  sigue exigiendo HTTPS mediante base-config.
+
+  NOTA DE SEGURIDAD: si en el futuro el backend pasa a HTTPS, cambie
+  cleartextTrafficPermitted a "false" en base-config y elimine este archivo,
+  quitando tambien android:networkSecurityConfig del AndroidManifest.xml.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

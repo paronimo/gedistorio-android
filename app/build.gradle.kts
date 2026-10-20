@@ -13,10 +13,26 @@ android {
         minSdk = 24
         targetSdk = 37
         versionCode = 1
+<<<<<<< Updated upstream
         versionName = "1.0"
+=======
+            versionName = "0.5"
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+>>>>>>> Stashed changes
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
+            // URL del backend web (sin barra final). Se toma de gradle.properties
+            // (geditorio.backendUrl) o de la variable de entorno GEDITORIO_BACKEND_URL.
+            // 10.0.2.2 es el equipo anfitrion visto desde el emulador; para un
+            // celular real hay que poner la IP del equipo en la misma red, por
+            // ejemplo http://192.168.1.50:3000, y recompilar la app.
+            val backendUrl = (project.findProperty("geditorio.backendUrl") as String?)
+                ?: System.getenv("GEDITORIO_BACKEND_URL")
+                ?: "http://10.0.2.2:3000"
+            buildConfigField("String", "BACKEND_URL", "\"${backendUrl.trimEnd('/')}\"")
+        }
+        buildFeatures {
+            buildConfig = true
+        }
 
     buildTypes {
         release {
@@ -29,6 +45,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
 }
 
 dependencies {
@@ -41,6 +58,9 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
     testImplementation(libs.junit)
+    // Implementacion real de org.json para las pruebas unitarias de la JVM,
+    // en lugar del stub de Android que lanza "not mocked".
+    testImplementation("org.json:json:20240303")
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
 }

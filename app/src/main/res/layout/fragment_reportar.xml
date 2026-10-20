@@ -83,6 +83,162 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Selección de manzanas sobre el mapa -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/reportar_manzanas_titulo"
+            android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/reportar_manzanas_ayuda"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="@color/texto_secundario" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/borde"
+            app:strokeWidth="1dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <com.example.geditorio.ui.reportar.MapaManzanasView
+                    android:id="@+id/mapaManzanas"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/txtMapaVacio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text="@string/reportar_manzanas_sin_datos"
+                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textColor="@color/texto_terciario"
+                    android:visibility="gone" />
+
+                <!-- Controles visibles de acercar, alejar y reiniciar encuadre -->
+                <LinearLayout
+                    android:id="@+id/controlesZoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnZoomIn"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="0dp"
+                        android:text="+"
+                        android:textSize="18sp"
+                        app:cornerRadius="20dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnZoomOut"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="4dp"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="0dp"
+                        android:text="-"
+                        android:textSize="18sp"
+                        app:cornerRadius="20dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnZoomReset"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="4dp"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="0dp"
+                        android:text="↺"
+                        android:textSize="14sp"
+                        app:cornerRadius="20dp" />
+                </LinearLayout>
+            </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/reportar_manzanas_seleccionadas"
+            android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta" />
+
+        <TextView
+            android:id="@+id/txtSeleccionManzanas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/reportar_sin_seleccion"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="@color/texto_secundario" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnQuitarUltima"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reportar_quitar_ultima" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnQuitarTodo"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/reportar_quitar_todo" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/reportar_territorio_texto"
+            android:textAppearance="@style/TextAppearance.Geditorio.Etiqueta" />
+
+        <TextView
+            android:id="@+id/txtTextoTerritorios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="@color/texto"
+            tools:text="T 4 : 7250 (Faltan: 7251, 7270)" />
+
         <!-- Resultado de la salida: se realizó o no -->
         <TextView
             android:layout_width="wrap_content"

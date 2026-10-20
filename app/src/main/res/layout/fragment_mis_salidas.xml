@@ -54,5 +54,34 @@
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:textColor="@color/texto_terciario"
             android:visibility="gone" />
+
+        <!-- Error al consultar el cronograma: nunca se muestra como lista vacia
+             ni se rellena con datos de ejemplo. -->
+        <LinearLayout
+            android:id="@+id/bloqueError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtErrorCronograma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/texto_secundario"
+                android:gravity="center" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReintentar"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/reintentar" />
+        </LinearLayout>
     </FrameLayout>
 </LinearLayout>
