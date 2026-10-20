@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icono de las notificaciones del cronograma: una campana.
+     Android exige un icono monocromo (blanco) para la barra de estado. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="@android:color/white">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M12,22a2.2,2.2 0 0,0 2.2,-2.2h-4.4A2.2,2.2 0 0,0 12,22zM18.5,16.5v-5.3c0,-3.2 -1.7,-5.9 -4.8,-6.6V3.9a1.7,1.7 0 0,0 -3.4,0v0.7c-3.1,0.7 -4.8,3.4 -4.8,6.6v5.3L4,18.1v1.1h16v-1.1z" />
+</vector>

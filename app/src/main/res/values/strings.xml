@@ -69,17 +69,37 @@
     <string name="reportar_dialog_sin_identificador">Esta figura no tiene número de manzana o territorio asignado.</string>
     <string name="btn_cancelar">Cancelar</string>
     <string name="error_falta_resultado">Indicá si la salida se realizó o no.</string>
-    <string name="reporte_enviado">Reporte enviado y guardado en el gestor.</string>
-    <string name="reporte_ya_guardado">Este reporte ya estaba guardado en el gestor.</string>
+    <string name="reporte_enviado">Reporte enviado y guardado en la nube.</string>
+    <string name="reporte_ya_guardado">Este reporte ya estaba guardado en la nube.</string>
+    <string name="reporte_pendiente">Sin conexión: el reporte quedó guardado en este celular y se enviará solo cuando vuelva internet.</string>
     <string name="reporte_cancelado">Formulario descartado.</string>
     <string name="reporte_envio_en_curso">El reporte se está enviando. Esperá a que termine.</string>
     <string name="reporte_error_sin_configurar">No hay un servidor configurado en la app.</string>
     <string name="reporte_error_sesion">La sesión no es válida. Cerrá sesión y volvé a entrar.</string>
     <string name="reporte_error_salida">El gestor no encontró esta salida en el cronograma.</string>
-    <string name="reporte_error_conexion">No se pudo enviar el reporte: revisá la conexión al servidor.</string>
+    <string name="reporte_error_conexion">Sin conexión: el reporte quedó guardado en este celular y se enviará cuando vuelva internet.</string>
     <string name="reporte_error_servidor">El servidor no pudo guardar el reporte. Intentá nuevamente.</string>
     <string name="reporte_error_generico">No se pudo enviar el reporte. Intentá nuevamente.</string>
 
+    <!-- Inicio de sesión -->
+    <string name="login_titulo">Geditorio</string>
+    <string name="login_subtitulo">Ingresá con tu cuenta de conductor.</string>
+    <string name="login_correo">Correo electrónico</string>
+    <string name="login_contrasena">Contraseña</string>
+    <string name="login_boton_entrar">Iniciar sesión</string>
+    <string name="error_correo_vacio">Ingresá tu correo electrónico.</string>
+    <string name="error_contrasena_vacia">Ingresá tu contraseña.</string>
+    <string name="error_credenciales">El correo o la contraseña son incorrectos.</string>
+    <string name="error_conexion">No se pudo conectar. Revisá tu conexión a internet.</string>
+    <string name="error_generico">No se pudo iniciar sesión. Intentá nuevamente.</string>
+    <!-- Cerrar sesión -->
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="cerrar_sesion_pregunta">¿Querés cerrar sesión?</string>
+    <!-- Notificaciones del cronograma -->
+    <string name="canal_salidas_nombre">Salidas programadas</string>
+    <string name="canal_salidas_descripcion">Avisos de tus salidas del cronograma y recordatorios del informe.</string>
+    <string name="notificacion_titulo">Geditorio</string>
+    <string name="notificacion_permiso_pedido">Las notificaciones te avisan de tus salidas programadas. Podés desactivarlas cuando quieras.</string>
     <!-- Pantallas pendientes de implementar -->
     <string name="proximamente">Próximamente</string>
     <string name="historial_descripcion">Aquí consultarás el historial de salidas.</string>

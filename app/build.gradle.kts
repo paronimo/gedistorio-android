@@ -1,5 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
+    // Procesa app/src/google-services.json (proyecto Firebase gedistorio). El
+    // plugin agrega la configuracion publica de Firebase; las claves privadas
+    // (cuenta de servicio) quedan solo en el backend.
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -13,12 +17,8 @@ android {
         minSdk = 24
         targetSdk = 37
         versionCode = 1
-<<<<<<< Updated upstream
-        versionName = "1.0"
-=======
-            versionName = "0.5"
-            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
->>>>>>> Stashed changes
+        versionName = "0.5"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
             // URL del backend web (sin barra final). Se toma de gradle.properties
             // (geditorio.backendUrl) o de la variable de entorno GEDITORIO_BACKEND_URL.
@@ -57,6 +57,15 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
+    // Firebase Authentication (sesion del conductor) y FCM (notificaciones
+    // aunque la app este cerrada). BoM para alinear las versiones.
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.messaging)
+    // Reportes en la nube: se guardan directo en Firestore aunque el backend
+    // local esté apagado.
+    implementation(libs.firebase.firestore)
+    implementation(libs.kotlinx.coroutines.play.services)
     testImplementation(libs.junit)
     // Implementacion real de org.json para las pruebas unitarias de la JVM,
     // en lugar del stub de Android que lanza "not mocked".

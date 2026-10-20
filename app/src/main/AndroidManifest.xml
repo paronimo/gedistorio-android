@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Envio de reportes al backend web. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Reintentar reportes pendientes cuando vuelve la red. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Notificaciones de las salidas programadas (FCM). En Android 13+ el
+         usuario debe conceder el permiso; la app lo pide al iniciar sesion. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,8 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Geditorio">
+        <!-- Pantalla publica: inicio de sesion con la cuenta de conductor. El
+             servicio de mensajes de Firebase (que recibe las notificaciones
+             con la app cerrada) lo declara la libreria firebase-messaging. -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -23,6 +31,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- Pantalla privada: requiere sesion iniciada. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- Valor por defecto de FCM (namespace de firebase-messaging): con la
+             app cerrada, el sistema muestra el aviso en nuestro canal e icono. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="salidas" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notificacion" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/azul" />
     </application>
 
 </manifest>

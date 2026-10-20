@@ -1,5 +1,6 @@
 package com.example.geditorio
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -7,22 +8,17 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-<<<<<<< Updated upstream
-=======
 import com.example.geditorio.data.AuthRepository
+import com.example.geditorio.data.cloud.ReintentoReportes
+import com.example.geditorio.push.NotificacionesPush
 import com.example.geditorio.ui.home.HomeFragment
-import com.example.geditorio.ui.login.LoginActivity
->>>>>>> Stashed changes
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-<<<<<<< Updated upstream
-class MainActivity : AppCompatActivity() {
-=======
 class MainActivity : AppCompatActivity(), HomeFragment.CerrarSesionListener {
 
     private val auth = AuthRepository()
 
->>>>>>> Stashed changes
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -36,10 +32,6 @@ class MainActivity : AppCompatActivity(), HomeFragment.CerrarSesionListener {
         // Navegacion principal: Inicio / Mis salidas / Reportar / Historial
         val navHost = supportFragmentManager
             .findFragmentById(R.id.navHostFragment) as NavHostFragment
-<<<<<<< Updated upstream
-        findViewById<BottomNavigationView>(R.id.bottomNav)
-            .setupWithNavController(navHost.navController)
-=======
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
         bottomNav.setupWithNavController(navHost.navController)
 
@@ -50,6 +42,17 @@ class MainActivity : AppCompatActivity(), HomeFragment.CerrarSesionListener {
             confirmarCierreSesion()
             true
         }
+
+        // Reportes que quedaron sin conexión: se reintentan al abrir la app y,
+        // mientras esté abierta, cuando vuelve la red.
+        ReintentoReportes.iniciar(this)
+
+        // Notificaciones del cronograma (FCM): canal, permiso en Android 13+
+        // y registro del celular en el backend con la cuenta iniciada, para
+        // que el servidor identifique al destinatario sin adivinar nombres.
+        NotificacionesPush.crearCanal(this)
+        NotificacionesPush.pedirPermiso(this)
+        NotificacionesPush.iniciarRegistro(this)
     }
 
     override fun onCerrarSesionSolicitado() {
@@ -66,14 +69,11 @@ class MainActivity : AppCompatActivity(), HomeFragment.CerrarSesionListener {
     }
 
     private fun cerrarSesion() {
-        auth.cerrarSesion()
-        irALogin()
-    }
-
-    /** Vuelve al login limpiando la pila para que no se pueda volver atras. */
-    private fun irALogin() {
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
->>>>>>> Stashed changes
+        // Desvincula el token FCM de la cuenta antes de salir: este celular
+        // deja de recibir los avisos de las salidas de esa persona.
+        NotificacionesPush.desvincularAntesDeCerrarSesion(this, auth) {
+            startActivity(NotificacionesPush.intentDeInicio(this))
+            finish()
+        }
     }
 }

@@ -24,7 +24,12 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
-import java.util.UUID
+import com.example.geditorio.data.cloud.ColaReportesDisco
+import com.example.geditorio.data.cloud.CuentaNube
+import com.example.geditorio.data.cloud.FirestoreReportesNube
+import com.example.geditorio.data.cloud.ReportePendiente
+import com.example.geditorio.data.cloud.ResultadoEnvio
+import com.example.geditorio.data.cloud.SincronizadorReportes
 
 /**
  * Pantalla Reportar salida: formulario para indicar el resultado y las manzanas
@@ -34,14 +39,16 @@ import java.util.UUID
  * toques) y genera el texto estructurado para la columna "Territorio" del
  * reporte (por ejemplo: "T 4 : 7250 (Faltan: 7251, 7270)" o "T 4").
  *
- * Al enviar, valida el formulario, construye [ReporteSalida] y lo manda al
- * backend web a traves de [SalidaRepository]. El formulario solo se da por
- * enviado cuando el servidor confirma el guardado; mientras tanto el boton
- * queda deshabilitado para no duplicar el reporte.
+ * Al enviar, valida el formulario, construye [ReporteSalida] y lo guarda
+ * DIRECTO en Cloud Firestore (no depende del backend local). Solo se da por
+ * enviado cuando Firestore confirma; sin conexion queda en la cola persistente
+ * del celular y se reintenta solo, con el mismo identificador (sin duplicar).
+ * La lista de salidas sigue consultandose al backend ([SalidaRepository]).
  */
 class ReportarFragment : Fragment() {
 
     private val repository = SalidaRepository()
+    private lateinit var sincronizador: SincronizadorReportes
     private lateinit var manzanasRepository: ManzanasRepository
 
     private var salida: Salida? = null
@@ -52,10 +59,16 @@ class ReportarFragment : Fragment() {
     private val historial = ArrayDeque<SeleccionMapa>()
 
     private var envioEnCurso = false
-    // Clave del ultimo intento: los reintentos del MISMO reporte la reutilizan
-    // para que el backend lo reconozca y no cree uno nuevo.
-    private var claveIdempotencia: String? = null
-    private var huellaUltimoIntento: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // La cola está en el almacenamiento interno: un reporte sin conexión
+        // sobrevive a cerrar la app y a reiniciar el celular.
+        sincronizador = SincronizadorReportes(
+            cliente = FirestoreReportesNube(),
+            cola = ColaReportesDisco(requireContext().applicationContext)
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -308,41 +321,49 @@ class ReportarFragment : Fragment() {
             territorioTexto = textoTerritorio
         )
 
-        // Si el contenido cambia, es otro reporte y lleva otra clave. Si es el
-        // mismo y el envio anterior fallo, se reintenta con la misma clave.
-        val huella = listOf(reporte.salidaId, reporte.realizada, reporte.observaciones, reporte.territorioTexto)
-            .joinToString("\u0000")
-        val clave = if (huella == huellaUltimoIntento && claveIdempotencia != null) {
-            claveIdempotencia!!
-        } else {
-            UUID.randomUUID().toString().also { claveIdempotencia = it }
+        // Identidad desde la sesión de Firebase (nunca desde el formulario).
+        val identidad = CuentaNube.identidadActual().getOrElse {
+            Toast.makeText(requireContext(), R.string.reporte_error_sesion, Toast.LENGTH_LONG).show()
+            return
         }
-        huellaUltimoIntento = huella
-
+        // El id del documento depende de la salida y del usuario: reintentar el
+        // mismo reporte sobrescribe el MISMO documento, nunca crea otro.
+        val pendiente = ReportePendiente(
+            clave = FirestoreReportesNube.documentId(reporte.salidaId, identidad.uid),
+            outingId = reporte.salidaId,
+            salidaFecha = salidaActual.fecha,
+            realizada = reporte.realizada,
+            observaciones = reporte.observaciones,
+            territorioTexto = reporte.territorioTexto,
+            uid = identidad.uid,
+            email = identidad.email
+        )
         val boton = view.findViewById<MaterialButton>(R.id.btnEnviar)
         envioEnCurso = true
         boton.isEnabled = false
-
         // El envio corre fuera del hilo de la interfaz: la pantalla sigue
-        // respondiendo aunque el servidor tarde o no haya conexion.
+        // respondiendo aunque la nube tarde o no haya conexion.
         viewLifecycleOwner.lifecycleScope.launch {
-            val resultado = repository.enviarReporte(reporte, clave)
-
+            val resultado = sincronizador.enviar(pendiente)
             envioEnCurso = false
             boton.isEnabled = true
-
-            if (resultado.guardado) {
-                claveIdempotencia = null
-                huellaUltimoIntento = null
-                val mensaje = if (resultado.duplicado) {
-                    R.string.reporte_ya_guardado
-                } else {
-                    R.string.reporte_enviado
+            when (resultado) {
+                is ResultadoEnvio.Guardado -> {
+                    val mensaje = if (resultado.yaExistia) {
+                        R.string.reporte_ya_guardado
+                    } else {
+                        R.string.reporte_enviado
+                    }
+                    Toast.makeText(requireContext(), mensaje, Toast.LENGTH_LONG).show()
                 }
-                Toast.makeText(requireContext(), mensaje, Toast.LENGTH_LONG).show()
-            } else {
-                val mensaje = mensajeDeError(resultado.error)
-                Toast.makeText(requireContext(), mensaje, Toast.LENGTH_LONG).show()
+                is ResultadoEnvio.Pendiente -> {
+                    // Todavía no está en la nube: se avisa con claridad.
+                    Toast.makeText(requireContext(), R.string.reporte_pendiente, Toast.LENGTH_LONG).show()
+                }
+                is ResultadoEnvio.Error -> {
+                    val mensaje = mensajeDeError(resultado.motivo)
+                    Toast.makeText(requireContext(), mensaje, Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
